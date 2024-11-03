@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .student_box
+            {
+                border-color: blue;
+                border-width: 1px;
+                border-style: solid;
+            }
+        </style>
+        
+        <script>
+            var count = 1;
+            function newStudent()
+            {
+                count++;
+                var container = document.getElementById("container");
+                var studentbox = document.createElement("div");
+                studentbox.classList.add("student_box");
+                
+                var box_content = 'Id: <input type="text" name="id'+count+'"/> <br/>';
+                box_content+='Name: <input type="text" name="name1"/> <br/>';
+                box_content+='Gender:<input type="radio" checked="checked" name="gender'+count+'" value="male"/> Male';
+                box_content+='<input type="radio" name="gender'+count+'" value="female"/> Female <br/>';
+                box_content+='Dob: <input type="date" name="dob'+count+'"/>';
+                
+                studentbox.innerHTML = box_content;
+                container.appendChild(studentbox);
+                
+                document.getElementById("indexes").value += ","+count;
+            }
+        </script>
+        
+    </head>
+    <body>
+        <form action="load" method="POST">
+            <div id="container">
+                <div class="student_box">
+                    Id: <input type="text" name="id1"/> <br/>
+                    Name: <input type="text" name="name1"/> <br/>
+                    Gender:<input type="radio" checked="checked" name="gender1" value="male"/> Male 
+                    <input type="radio" name="gender1" value="female"/> Female
+                    <br/>
+                    Dob: <input type="date" name="dob1"/>
+                </div>
+            </div>
+            <input type="hidden" id="indexes" name="indexes" value="1"/>
+            <input type="button" value="+ student" onclick="newStudent();"/>
+            <input type="submit" value="Save"/>
+        </form>
+    </body>
+</html>
